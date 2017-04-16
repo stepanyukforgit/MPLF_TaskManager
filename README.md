@@ -10,4 +10,6 @@ This project was created to improve the process of accounting for services provi
 
 -exporting information from the table to text file.
 
+-exporting information from the table to pdf file.
+
 Though this project is still beign developed, it can already be used in different companies work.

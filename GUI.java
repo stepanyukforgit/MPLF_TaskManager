@@ -87,6 +87,21 @@ public class GUI extends JFrame{
                 Func.saveTM();
             }
         });
+        JMenuItem jmiExportPDF=new JMenuItem("Экспорт в формат PDF");
+        jmiExportPDF.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser jfc=new JFileChooser();
+                jfc.setDialogTitle("Export");
+                jfc.setDialogType(JFileChooser.SAVE_DIALOG);
+                jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                jfc.setCurrentDirectory(new File("D:\\"));
+                jfc.setSelectedFile(new File("Список дел.pdf"));
+                int open=jfc.showSaveDialog(GUI.this);
+                if(open==JFileChooser.APPROVE_OPTION)
+                    Func.exportPDF(jfc.getSelectedFile());
+            }
+        });
         JMenuItem jmiExportTXT=new JMenuItem("Экспорт в формат TXT");
         jmiExportTXT.addActionListener(new ActionListener(){
             @Override
@@ -99,7 +114,7 @@ public class GUI extends JFrame{
                 jfc.setSelectedFile(new File("Список дел.txt"));
                 int open=jfc.showSaveDialog(GUI.this);
                 if(open==JFileChooser.APPROVE_OPTION)
-                Func.exportTXT(jfc.getSelectedFile());
+                    Func.exportTXT(jfc.getSelectedFile());
             }
         });
         JMenuItem jmiExit=new JMenuItem("Выход");
@@ -110,6 +125,7 @@ public class GUI extends JFrame{
             }
         });
         fileMenu.add(jmiSave);
+        fileMenu.add(jmiExportPDF);
         fileMenu.add(jmiExportTXT);
         fileMenu.add(jmiExit);
         menuBar.add(fileMenu);
